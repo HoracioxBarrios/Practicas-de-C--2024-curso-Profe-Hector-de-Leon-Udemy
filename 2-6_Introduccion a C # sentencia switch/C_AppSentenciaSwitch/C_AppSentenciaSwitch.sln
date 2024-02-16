@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34511.84
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "C_AppSentenciaSwitch", "C_AppSentenciaSwitch\C_AppSentenciaSwitch.csproj", "{EB943848-B87A-4678-88D9-7724AF7C0B2D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EB943848-B87A-4678-88D9-7724AF7C0B2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB943848-B87A-4678-88D9-7724AF7C0B2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB943848-B87A-4678-88D9-7724AF7C0B2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB943848-B87A-4678-88D9-7724AF7C0B2D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {923EF581-354A-4219-92D8-8E83751098B8}
+	EndGlobalSection
+EndGlobal
