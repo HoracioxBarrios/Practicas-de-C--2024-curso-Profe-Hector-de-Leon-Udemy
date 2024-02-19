@@ -106,4 +106,23 @@
         }
     }
 
+
+
+    /*
+     POLIMORFISMO:
+        En C#, la sobrecarga de métodos es un tipo de polimorfismo conocido como 
+        polimorfismo de sobrecarga. El polimorfismo, en términos generales, se refiere 
+        a la capacidad de los objetos de tomar muchas formas y comportamientos.
+        
+
+        La sobrecarga de métodos y la sobrecarga de Operadores en C# es un ejemplo de polimorfismo en tiempo de COMPILACION.
+        Esto significa que el compilador decide qué versión del método sobrecargado o del operador sobrecargado se va a 
+        utilizar en función de los tipos de los argumentos que se pasan al método o al operador durante la compilación del código.
+
+
+
+    En el siguiente tema hay otro ejemplo de otro tipo de Polimorfismo...
+     
+     
+     */
 }
