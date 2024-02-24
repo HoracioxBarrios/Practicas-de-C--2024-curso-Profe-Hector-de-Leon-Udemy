@@ -1,6 +1,7 @@
 ﻿
 
 using System.Text;
+using System.Timers;
 
 namespace ConsoleAppFormatoJSON
 {
@@ -8,6 +9,13 @@ namespace ConsoleAppFormatoJSON
     {
         static void Main(string[] args)
         {
+            /* La idea del JSON es que sea un formato de datos independiente de los lenguajes de programación,
+               lo que permite que la información estructurada pueda ser compartida y entendida entre diferentes sistemas.
+               Por ejemplo, si generamos un JSON en C#, otros lenguajes como Java o JavaScript pueden interpretarlo
+               correctamente sin importar las diferencias en la sintaxis y las estructuras de datos. 
+            */
+
+
             //ejemplo 1:json puede representar objetos
             Cerveza miCerveza = new Cerveza()
             {
@@ -82,6 +90,23 @@ namespace ConsoleAppFormatoJSON
             la cadena JSON completa llamando al método ToString() del StringBuilder.
                                      
              */
+
+
+            //El json se veria asi:
+            /*
+             
+             
+             
+             [
+                {"Name" : "Suave", "Marca" : "Brahma"},
+                {"Name" : "Suave", "Marca" : "Corona"}
+             ]
+
+             
+             
+             */
+
+
         }
 
 
