@@ -38,7 +38,7 @@
        
 
         // DATO IMPORTANTE:
-        //Sino sobreescribimos ToString al querer mostrar el animal nos muestra esto: onsoleApp.Animal
+        //Sino sobreescribimos ToString al querer mostrar el animal nos muestra esto: consoleApp.Animal
         public override string ToString()
         {
             if(Nombre == null)
