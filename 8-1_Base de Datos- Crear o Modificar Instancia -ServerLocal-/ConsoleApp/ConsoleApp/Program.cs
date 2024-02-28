@@ -35,7 +35,7 @@ la nueva instancia según las especificaciones que hayas proporcionado.
 
 
 /*-------------------------- CREAR UNA NUEVA -----------------------------------
- Con Sql server 2022 instalado: Busca en tu pc el Sql Server Instalacion Center:
+ Con Sql server 2022 instalado: Busca en tu pc el SQL SERVER 2022 INSTALACION CENTER :
 
 1_ Ir Instalacion
 
