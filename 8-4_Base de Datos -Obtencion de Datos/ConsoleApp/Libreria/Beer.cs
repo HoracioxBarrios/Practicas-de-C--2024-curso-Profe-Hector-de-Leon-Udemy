@@ -18,9 +18,16 @@ namespace Libreria
             Name = name;
             BrandId = brandId;
         }
-        public override string ToString()
+
+        //Sobrecarga de Constructor, para pasarle solo estos datos, ya que la id se genera automaticamente en la Db ahora
+        public Beer(string name, int brandId)
         {
-            return $"Id: {Id}, Name: {Name}, BrandId: {BrandId}";
+            Name = name;
+            BrandId = brandId;
         }
+        //public override string ToString()
+        //{
+        //    return $"Id: {Id}, Name: {Name}, BrandId: {BrandId}";
+        //}
     }
 }

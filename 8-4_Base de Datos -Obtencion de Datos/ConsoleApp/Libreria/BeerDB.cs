@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace Libreria
 {
+    //BeerDB es el servicio que va a Gestionar las Beers en la DB
     public class BeerDB : DB
     {
         
@@ -45,6 +46,19 @@ namespace Libreria
         }
 
 
+        //INSERT EN DB
+        public void Add(Beer beer)
+        {
+            Connect();
+            string query = "INSERT INTO Beer(Name, BrandId) " + //ojo el espacio despues de BrandId
+                "VALUES(@name, @brandId) "; // No le pasamos beer.Name, o beer.BrandId porque puede ser peligroso por la inyeccion de SQL, sino que le pasamos un alias con el @
+            SqlCommand command = new SqlCommand(query, _connection);
+            command.Parameters.AddWithValue("@name", beer.Name);
+            command.Parameters.AddWithValue("@brandId", beer.BrandId);
+            command.ExecuteNonQuery();
+
+            Close();
+        }
 
     }
 }

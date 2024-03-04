@@ -24,7 +24,7 @@ namespace Libreria
         {
             _connection = new SqlConnection(_connectionString); //Instancia la conecion
             _connection.Open();
-            Console.WriteLine("Se abrio la conexion");
+            //Console.WriteLine("Se abrio la conexion");
         }
 
 
@@ -34,7 +34,7 @@ namespace Libreria
             if (_connection != null && _connection.State == System.Data.ConnectionState.Open) // protejemos el close() si _conection no es null y si el estado es open, podemos cerrar porque está abierto.
             {
                 _connection.Close();
-                Console.WriteLine("Se cerro la conexion");
+                //Console.WriteLine("Se cerro la conexion");
             }
         }
 
