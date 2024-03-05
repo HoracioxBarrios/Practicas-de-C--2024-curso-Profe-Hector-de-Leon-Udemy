@@ -102,7 +102,7 @@ namespace ConsoleApp
             Console.WriteLine("Escribe la Id de la Cerveza a editar: ");
             int id = int.Parse(Console.ReadLine());
             Beer beer = beerDB.GetOne(id);
-            if(beer != null)
+            if (beer != null)
             {
                 Console.WriteLine("Escribe el nuevo nombre de la Cerveza");
                 string name = Console.ReadLine();
@@ -112,7 +112,7 @@ namespace ConsoleApp
                 beer.BrandId = brandId;
 
                 beerDB.Edit(beer); // editamos
-                            }
+            }
             else
             {
                 Console.WriteLine("La Cerveza No existe ");
