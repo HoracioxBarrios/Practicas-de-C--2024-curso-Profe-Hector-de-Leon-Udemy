@@ -45,11 +45,36 @@ namespace Libreria
             return listBeer;
         }
 
+        //PARA PODER UPDATEAR UNA CERVEZA, NECESITAMOS TRAERLA
+        public Beer GetOne(int id)
+        {
+            Beer beer = null;
+            base.Connect();
+            string query = "SELECT Id, Name, BrandId FROM BEER " +
+                   "WHERE id = @id";
+            SqlCommand command = new SqlCommand(query, _connection);
+            command.Parameters.AddWithValue("@id", id);
+            SqlDataReader reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                                                  //en el index 0 en la tabla Beer tenemos la id que es (int 32)
+                string name = reader.GetString(1); //en el index 1 el Name que es string
+                int brandId = reader.GetInt32(2);
+                beer = new Beer(id, name, brandId);
+            }
+
+
+            base.Close();
+            return beer;
+        }
+
+        
 
         //INSERT EN DB
         public void Add(Beer beer)
         {
-            Connect();
+            base.Connect();
             string query = "INSERT INTO Beer(Name, BrandId) " + //ojo el espacio despues de BrandId
                 "VALUES(@name, @brandId) "; // No le pasamos beer.Name, o beer.BrandId porque puede ser peligroso por la inyeccion de SQL, sino que le pasamos un alias con el @
             SqlCommand command = new SqlCommand(query, _connection);
@@ -57,7 +82,21 @@ namespace Libreria
             command.Parameters.AddWithValue("@brandId", beer.BrandId);
             command.ExecuteNonQuery();
 
-            Close();
+            base.Close();
+        }
+
+        //Teniendo la Cerveza que trajimos usando GetOne podemos updatear
+        public void Edit(Beer beer)
+        {
+            base.Connect();
+            string query = "UPDATE beer SET name = @name, brandId = @brandId " +
+                "WHERE id = @id";
+            SqlCommand command = new SqlCommand(query, _connection);
+            command.Parameters.AddWithValue("@name", beer.Name);
+            command.Parameters.AddWithValue("@brandId", beer.BrandId);
+            command.Parameters.AddWithValue("@id", beer.Id);// le pasamos la id para que sepa cual debe modificar
+            command.ExecuteNonQuery();
+            base.Close();
         }
 
     }

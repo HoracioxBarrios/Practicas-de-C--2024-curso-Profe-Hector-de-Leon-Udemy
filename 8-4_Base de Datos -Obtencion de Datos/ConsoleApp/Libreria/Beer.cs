@@ -25,6 +25,7 @@ namespace Libreria
             Name = name;
             BrandId = brandId;
         }
+
         //public override string ToString()
         //{
         //    return $"Id: {Id}, Name: {Name}, BrandId: {BrandId}";

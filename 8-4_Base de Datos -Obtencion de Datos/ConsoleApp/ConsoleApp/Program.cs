@@ -30,6 +30,7 @@ namespace ConsoleApp
                             AddBeer(beerDB);
                             break;
                         case 3://Editar
+                            EditBeer(beerDB);
                             break;
                         case 4://Eliminar
                             break;
@@ -74,7 +75,7 @@ namespace ConsoleApp
 
             foreach (Beer beer in listBeers)
             {
-                Console.WriteLine(beer.Name);
+                Console.WriteLine($"Id: {beer.Id}, Name: {beer.Name}");
             }
         }
 
@@ -91,6 +92,33 @@ namespace ConsoleApp
             //Agregar a la DB
             beerDB.Add(new Beer(name, brandId));
         }
+
+        public static void EditBeer(BeerDB beerDB)
+        {
+            Console.Clear();
+            ShowBeers(beerDB);
+
+            Console.WriteLine("Editar Cerveza \n");
+            Console.WriteLine("Escribe la Id de la Cerveza a editar: ");
+            int id = int.Parse(Console.ReadLine());
+            Beer beer = beerDB.GetOne(id);
+            if(beer != null)
+            {
+                Console.WriteLine("Escribe el nuevo nombre de la Cerveza");
+                string name = Console.ReadLine();
+                Console.WriteLine("Escribe el Id de la Marca: ");
+                int brandId = int.Parse(Console.ReadLine());
+                beer.Name = name;
+                beer.BrandId = brandId;
+
+                beerDB.Edit(beer); // editamos
+                            }
+            else
+            {
+                Console.WriteLine("La Cerveza No existe ");
+            }
+            
+        }
     }
 }
 
@@ -100,4 +128,11 @@ namespace ConsoleApp
 supongamos que lo desactivamos en el administrador de tareas de windows,
 podemos buscar con la directiva (Servicios) SQL SERVER ej: MISERVER
 e iniciar. con el servidor iniciado ya podemos conectarnos con db.Connect()
+ */
+
+/*DATO
+ En la Db Identity especification es una opcion para decir que se auto incremente.
+Identity Seed es el valor que va a ser el inicial cuando se incerte un item.
+
+ con esto corregí un error que se aunto incremento erroneamente la id de la tabla Beer.
  */
