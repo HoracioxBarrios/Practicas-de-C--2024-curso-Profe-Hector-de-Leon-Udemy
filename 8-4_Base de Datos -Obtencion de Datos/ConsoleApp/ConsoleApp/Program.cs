@@ -33,6 +33,7 @@ namespace ConsoleApp
                             EditBeer(beerDB);
                             break;
                         case 4://Eliminar
+                            DeleteBeer(beerDB);
                             break;
                         case 5://Salir
                             again = false;
@@ -42,10 +43,7 @@ namespace ConsoleApp
                             break;
 
                     }
-                } while(again);
-
-
-                // ACA DEBERIA IR LA CONSULTA
+                } while(again);              
 
 
             }
@@ -118,6 +116,26 @@ namespace ConsoleApp
                 Console.WriteLine("La Cerveza No existe ");
             }
             
+        }
+
+        public static void DeleteBeer(BeerDB beerDB)
+        {
+            Console.Clear();
+            ShowBeers(beerDB);
+
+            Console.WriteLine("Eliminar Cerveza \n");
+            Console.WriteLine("Escribe la Id de la Cerveza a Eliminar: ");
+            int id = int.Parse(Console.ReadLine());
+            Beer beer = beerDB.GetOne(id);
+            if (beer != null)
+            {
+                beerDB.Delete(id);
+            }
+            else
+            {
+                Console.WriteLine("La Cerveza No existe ");
+            }
+
         }
     }
 }

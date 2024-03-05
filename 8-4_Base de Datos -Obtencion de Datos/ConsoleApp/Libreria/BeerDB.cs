@@ -99,5 +99,15 @@ namespace Libreria
             base.Close();
         }
 
+        public void Delete(int id)
+        {
+            base.Connect();
+            string query = "DELETE FROM beer WHERE id=@id";
+            SqlCommand command = new SqlCommand(query, _connection);
+            command.Parameters.AddWithValue("@id", id);
+            command.ExecuteNonQuery();
+            base.Close();
+        }
+
     }
 }
