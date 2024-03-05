@@ -106,7 +106,7 @@ namespace ConsoleApp
             {
                 Console.WriteLine("Escribe el nuevo nombre de la Cerveza");
                 string name = Console.ReadLine();
-                Console.WriteLine("Escribe el Id de la Marca: ");
+                Console.WriteLine("Escribe la Brand Id (id de la marca): ");
                 int brandId = int.Parse(Console.ReadLine());
                 beer.Name = name;
                 beer.BrandId = brandId;
