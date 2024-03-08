@@ -5,7 +5,7 @@ VisualStudioVersion = 17.9.34607.119
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntityDB", "EntityDB\EntityDB.csproj", "{154086E4-E3AE-4EBA-81FB-EC886B2D5DF9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp", "ConsoleApp\ConsoleApp.csproj", "{5DE60814-293F-43DB-87D5-1A02A9EB9891}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntitySystemApp", "ConsoleApp\EntitySystemApp.csproj", "{5DE60814-293F-43DB-87D5-1A02A9EB9891}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

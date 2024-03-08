@@ -12,4 +12,5 @@ public partial class Beer
     public int BrandId { get; set; }
 
     public virtual Brand Brand { get; set; } = null!;
+
 }
