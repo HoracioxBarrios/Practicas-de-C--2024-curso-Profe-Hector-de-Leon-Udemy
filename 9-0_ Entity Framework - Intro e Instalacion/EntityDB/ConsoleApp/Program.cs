@@ -30,6 +30,7 @@ namespace ConsoleApp
                         Show(optionsBuilder);
                         break;
                     case 2:
+                        Add(optionsBuilder);
                         break;
                     case 3:
                         break;
@@ -149,7 +150,29 @@ namespace ConsoleApp
             }
         }
 
+        public static void Add(DbContextOptionsBuilder<CsharpDbContext> optionsBuilder)
+        {
+            Console.Clear();
+            Console.WriteLine("*** Agregar nueva Cerveza ***");
+            Console.WriteLine("Escribe el nombre: ");
+            string name = Console.ReadLine();
+            Console.WriteLine("Escribe la Brand Id (la Id de ka Marca): ");
+            int brandId = int.Parse(Console.ReadLine());
+
+            using (var context = new CsharpDbContext(optionsBuilder.Options))
+            {
+                Beer beer = new Beer()// Instanciamos una cerveza asignando a sus Propiedades los valores, es asi porque no hicimos un constructor que los reciba por parametro. ej: Beer beer = new Beer(nombreEjemplo, brandIdEjemplo);
+                {
+                    Name = name,
+                    BrandId = brandId
+                };
+                context.Add(beer);// esto no hace que se guarde a la db, sino que le decimos al contexto agrega este objeto
+                context.SaveChanges(); // esto es lo que hace que se guarde a la DB (Envia la Info a la DB)
+            }
+        }
+
     }
+
 }
 
 /*Paso a Paso para Instalar Entity Framework 
