@@ -36,6 +36,7 @@ namespace ConsoleApp
                         Edit(optionsBuilder);
                         break;
                     case 4:
+                        Delete(optionsBuilder);
                         break;
                     case 5:
                         again = false;
@@ -195,13 +196,38 @@ namespace ConsoleApp
 
                     contex.Entry(beer).State = EntityState.Modified;// de este modo sabe que la entidad Beer ha sido modificada
                     contex.SaveChanges();// esto es lo que hace que se guarde a la DB (Envia la Info a la DB)
-
+                    Console.WriteLine("Se Editó la Cerveza en la DB!");
                 }
                 else 
                 {
                     Console.WriteLine("No existe");
                 };
             }
+        }
+
+        public static void Delete(DbContextOptionsBuilder<CsharpDbContext> optionsBuilder)
+        {
+            Console.Clear();
+            Show(optionsBuilder);
+            Console.WriteLine("*** Eliminar Cerveza ***");
+            Console.WriteLine("Escribe la ID de la Cerveza a Eliminar");
+            int id= int.Parse(Console.ReadLine());
+
+            using (var contex = new CsharpDbContext(optionsBuilder.Options))
+            {
+                Beer beer = contex.Beers.Find(id);
+                if(beer != null)
+                {
+                    contex.Beers.Remove(beer); // Borrado Fisico
+                    contex.SaveChanges(); //Guarda en la DB los cambios
+                    Console.WriteLine("Se Borró la Cerveza de la DB!");
+                }
+                else
+                {
+                    Console.WriteLine("No existe");
+                }
+            }
+
         }
 
     }
