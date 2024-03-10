@@ -33,6 +33,7 @@ namespace ConsoleApp
                         Add(optionsBuilder);
                         break;
                     case 3:
+                        Edit(optionsBuilder);
                         break;
                     case 4:
                         break;
@@ -168,6 +169,38 @@ namespace ConsoleApp
                 };
                 context.Add(beer);// esto no hace que se guarde a la db, sino que le decimos al contexto agrega este objeto
                 context.SaveChanges(); // esto es lo que hace que se guarde a la DB (Envia la Info a la DB)
+            }
+        }
+
+        public static void Edit(DbContextOptionsBuilder<CsharpDbContext> optionsBuilder)
+        {
+            Console.Clear();
+            Show(optionsBuilder);
+            Console.WriteLine("*** Editar Cerveza ***");
+            Console.WriteLine("Escribe la ID de la cerveza a editar: ");
+            int id = int.Parse(Console.ReadLine());
+
+            using (var contex = new CsharpDbContext(optionsBuilder.Options))
+            {
+                Beer beer = contex.Beers.Find(id); //Find nos busca por su Primary Key un elemento
+                if(beer != null)
+                {
+                    Console.WriteLine("Escribe el nombre");
+                    string name = Console.ReadLine();
+                    Console.WriteLine("Escribe la ID de la marca");
+                    int brandId = int.Parse(Console.ReadLine());
+
+                    beer.Name = name;
+                    beer.BrandId = brandId;
+
+                    contex.Entry(beer).State = EntityState.Modified;// de este modo sabe que la entidad Beer ha sido modificada
+                    contex.SaveChanges();// esto es lo que hace que se guarde a la DB (Envia la Info a la DB)
+
+                }
+                else 
+                {
+                    Console.WriteLine("No existe");
+                };
             }
         }
 
