@@ -80,6 +80,7 @@ mostrarDelegate2("Mostramos este Mensaje 2!!!"); // Invocación del Método en e
 
 
 // --------- Definiciones abajo ---------:
+// Definimos la estructura del delegado. Los métodos que cumplan con esta estructura pueden ser asignados a variables de este tipo.
 
 // Es una práctica común y útil incluir la palabra "Delegate" en el nombre de los delegados en C#. Esto ayuda a clarificar su propósito y a distinguirlos de otros tipos de métodos o clases.
 public delegate int OperacionDelegate(int a, int b); // Firma del delegado
