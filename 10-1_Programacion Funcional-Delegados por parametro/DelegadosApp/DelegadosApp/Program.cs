@@ -12,7 +12,7 @@
     (En resumen son Funciones que PUEDEN RECIBIR OTRAS FUNCIONES POR PARAMETRO (delegados por parametro.))
  */
 
-//ASIGNACION
+//Declarcion y Asignacion del Metodo a la variable Delegada
 Operation operationMathDelegate = Functions.Sum;
 //USO
 Console.WriteLine(operationMathDelegate(10, 20));
@@ -28,8 +28,9 @@ Show cw = Console.WriteLine;
 //USO
 //cw("Mensaje con el metodo ConsoleWriteLine solo");
 
-//(una variable delegada puede tener un funcion asociada o varias)
+//Una VARIBLE DELEGADA PUEDE TENER UN METODO ASOCIADO O MAS....
 cw += Functions.ConsoleShow; //Se Acumula el nuevo metodo a la variable Delegada
+
 /*
     En esencia, cuando usas el operador += con delegados en C#, estás agregando un 
     método a la lista de métodos que la variable delegada puede invocar. En otras 
@@ -44,15 +45,21 @@ cw += Functions.ConsoleShow; //Se Acumula el nuevo metodo a la variable Delegada
 
 //USO
 //CONCEPTO DE MULTI DIFUSION (Cuando se ejecuta La variable Delegada (SE EJECUTAN en secuencia TODOS LO METODOS QUE TIENE DENTRO))
-cw("Mensaje Multi difusion con los dos metodos dentro de cw"); //Cuando ejecuta, se le pasa el string por parametro a las dos funciones a las que esta referencia la variable. Y SE EJECUTAN LOS DOS METODOS!
- 
+
+//cw("Mensaje Multi difusion con los dos metodos dentro de cw"); //Cuando ejecuta, se le pasa el string por parametro a las dos funciones a las que esta referencia la variable. Y SE EJECUTAN LOS DOS METODOS!
+
+
+
+Functions.HacerAlgo("Hora", "Barrios", cw);
 
 
 
 
-//DEFINICION
-delegate int Operation(int a, int b);
-delegate void Show(string message);
+
+
+//DEFINICION del Tipo ( El metodo debe respetar la estructura del delegado)
+public delegate int Operation(int a, int b);
+public delegate void Show(string message);
 
 
 
@@ -66,4 +73,12 @@ public static class Functions
     public static int Mul(int num1, int num2) => num1 * num2;
 
     public static void ConsoleShow(string m ) => Console.WriteLine(m.ToUpper()); //.upper para diferenciarla
+
+    //FUNCION DE ORDEN SUPERIOR
+    public static void HacerAlgo(string name, string lastName, Show fn)
+    {
+        Console.WriteLine("Hago algo al inicio");
+        fn($"Hola: {name} {lastName}");
+        Console.WriteLine("Hago algo al Final"); // se le llama callback,a la ejecucion de algo posterior a cuando la funcion en si ya ha terminado su ejecucion.(se puede hacer que la fn pasada por parametro se ejecute en algun punto) se suele usar con metodos asyncronos
+    }
 }
